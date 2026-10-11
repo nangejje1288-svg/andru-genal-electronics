@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shop | ANDRU GENAL ELECTRONICS</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    /* =========================
+   SHOP PAGE
+========================= */
+
+.shop-header {
+    text-align: center;
+    padding: 80px 20px;
+    background: #eff6ff;
+}
+
+.discount-news {
+    display: grid;
+    gap: 16px;
+    padding: 24px 7% 0;
+}
+
+.discount-news:empty {
+    display: none;
+}
+
+.discount-news-card {
+    padding: 20px 24px;
+    border: 1px solid #bfdbfe;
+    border-left: 5px solid #2563eb;
+    border-radius: 12px;
+    background: #eff6ff;
+}
+
+.discount-news-card h2 {
+    margin-bottom: 4px;
+    font-size: 20px;
+}
+
+.discount-news-card p {
+    color: #4b5563;
+}
+
+.discount-news-card .discount-news-date {
+    margin-top: 6px;
+    color: #1d4ed8;
+    font-weight: 700;
+}
+
+.shop-header p {
+    color: #2563eb;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.shop-header h1 {
+    font-size: 48px;
+    margin: 10px 0;
+}
+
+.shop-header span {
+    color: #6b7280;
+    font-size: 18px;
+}
+
+.shop-section {
+    padding: 70px 7%;
+}
+
+.shop-tools {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.shop-tools input,
+.shop-tools select {
+    padding: 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.shop-tools input {
+    flex: 1;
+}
+
+.shop-tools select {
+    width: 220px;
+}
+
+.shop-products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.shop-product {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.shop-product:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
+.shop-product-image {
+    height: 230px;
+    background: #f3f4f6;
+    overflow: hidden;
+}
+
+.shop-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.shop-product-info {
+    padding: 25px;
+}
+
+.shop-product-info .category {
+    color: #2563eb;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.shop-product-info h3 {
+    margin: 8px 0;
+}
+
+.shop-product-info p {
+    color: #6b7280;
+    min-height: 50px;
+}
+
+.shop-price {
+    color: #2563eb;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.shop-product-info button {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 7px;
+    background: #111827;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.shop-product-info button:hover {
+    background: #2563eb;
+}
+
+
+/* MOBILE SHOP */
+
+@media (max-width: 900px) {
+
+    .shop-products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .shop-tools {
+        flex-direction: column;
+    }
+
+    .shop-tools select {
+        width: 100%;
+    }
+
+    .shop-products {
+        grid-template-columns: 1fr;
+    }
+
+    .shop-header h1 {
+        font-size: 38px;
+    }
+
+    .site-footer-content { grid-template-columns: 1fr; gap: 24px; padding: 42px 20px 28px; }
+
+}
+
+.whatsapp-float {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 1100;
+    padding: 13px 18px;
+    border-radius: 999px;
+    background: #25d366;
+    color: #064e3b;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+}
+
+.whatsapp-float:hover {
+    background: #1fbd5a;
+}
+
+.site-footer { background: #030712; color: #e5e7eb; }
+.site-footer-content { padding: 54px 7% 38px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 42px; }
+.site-footer h2, .site-footer h3 { color: #fff; margin: 0 0 14px; }
+.site-footer p { color: #9ca3af; margin: 6px 0; }
+.site-footer a { color: #cbd5e1; }
+.site-footer a:hover { color: #fff; }
+.site-footer-links a { display: block; margin: 7px 0; }
+.site-footer-bottom { text-align: center; padding: 18px 20px; border-top: 1px solid #1f2937; color: #9ca3af; font-size: 14px; }
+.zoomable-product-image { cursor: zoom-in; }
+.product-image-viewer { position: fixed; inset: 0; z-index: 2000; display: none; align-items: center; justify-content: center; padding: 70px 20px 30px; background: rgba(3,7,18,.94); }
+.product-image-viewer.is-open { display: flex; }
+.product-image-viewer img { max-width: min(92vw,1200px); max-height: 82vh; object-fit: contain; transform: scale(1); transition: transform .15s ease; cursor: zoom-in; }
+.viewer-controls { position: absolute; top: 18px; right: 20px; display: flex; gap: 10px; z-index: 1; }
+.viewer-controls button { width: 46px; height: 46px; border: 1px solid #ffffff55; border-radius: 50%; background: #111827; color: white; font-size: 25px; cursor: pointer; }
+.viewer-hint { position: absolute; bottom: 16px; color: #e5e7eb; font-size: 14px; text-align: center; }
+.navbar nav { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
+.navbar nav a { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 8px 14px; border: 1px solid #e2e8f0; border-radius: 9px; background: #fff; color: #374151; font-size: 14px; font-weight: 700; transition: color .2s ease, background .2s ease, border-color .2s ease, transform .2s ease; }
+.navbar nav a:hover { border-color: #93c5fd; background: #eff6ff; color: #1d4ed8; transform: translateY(-1px); }
+.navbar nav a.active { border-color: #2563eb; background: #2563eb; color: #fff; }
+.navbar nav a:focus-visible { outline: 3px solid #93c5fd; outline-offset: 2px; }
+.navbar .logo { display: flex; align-items: center; flex-shrink: 0; }
+.navbar .logo img { display: block; width: auto; height: 64px; object-fit: contain; }
+.site-footer-content > div { min-width: 0; }
+.site-footer .footer-logo { display: block; width: 176px; max-width: 100%; height: auto; margin-bottom: 14px; }
+.site-footer a { overflow-wrap: anywhere; }
+@media (max-width: 900px) { .navbar { height: auto; min-height: 80px; padding: 12px 4%; flex-wrap: wrap; gap: 12px; } .navbar nav { order: 3; width: 100%; } }
+
+</style>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header class="navbar">
+
+        <a class="logo" href="INDEX.html" aria-label="Andru Genal Electronics home">
+            <img src="images/andru-genal-logo.png" alt="Andru Genal Electronics">
+        </a>
+
+        <nav>
+            <a href="INDEX.html">Home</a>
+            <a href="shop.html" class="active">Shop</a>
+            <a href="inventory.html">Inventory</a>
+            <a href="product.html">Products</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <a href="cart.html" class="cart-btn">
+            🛒 Cart <span id="cart-count">0</span>
+        </a>
+
+    </header>
+
+    <section class="discount-news" id="discount-news" aria-label="Discount news"></section>
+
+    <!-- SHOP HEADER -->
+    <section class="shop-header">
+
+        <p>ANDRU GENAL ELECTRONICS</p>
+
+        <h1>Our Products</h1>
+
+        <span>
+            Find quality electronics at affordable prices.
+        </span>
+
+    </section>
+
+
+    <!-- SEARCH -->
+    <section class="shop-section">
+
+        <div class="shop-tools">
+
+            <input
+                type="text"
+                id="search"
+                placeholder="Search for a product..."
+                onkeyup="searchProducts()"
+            >
+
+            <select id="category" onchange="filterProducts()">
+                <option value="all">All Categories</option>
+                <option value="phones">Phones</option>
+                <option value="laptops">Laptops</option>
+                <option value="accessories">Accessories</option>
+                <option value="tv">TV & Entertainment</option>
+            </select>
+
+        </div>
+
+
+        <!-- PRODUCTS -->
+        <div class="shop-products" id="products">
+
+
+            <!-- PRODUCT 1 -->
+            <div class="shop-product" data-category="phones">
+
+                <div class="shop-product-image">
+                    <img src="images/IMG-20260829-WA0174.jpg" alt="Samsung Galaxy Smartphone product image">
+                </div>
+
+                <div class="shop-product-info">
+
+                    <span class="category">
+                        Phones
+                    </span>
+
+                    <h3>Samsung Galaxy Smartphone</h3>
+
+                    <p>
+                        Modern smartphone with excellent
+                        performance and camera.
+                    </p>
+
+                    <div class="shop-price">
+                        UGX 850,000
+                    </div>
+
+                    <button
+                        onclick="addToCart('Samsung Galaxy Smartphone', 850000)"
+                    >
+                        🛒 Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 2 -->
+            <div class="shop-product" data-category="phones">
+
+                <div class="shop-product-image">
+                    <img src="images/IMG-20260829-WA0175.jpg" alt="iPhone product image">
+                </div>
+
+                <div class="shop-product-info">
+
+                    <span class="category">
+                        Phones
+                    </span>
+
+                    <h3>iPhone</h3>
+
+                    <p>
+                        Premium smartphone with powerful
+                        performance.
+                    </p>
+
+                    <div class="shop-price">
+                        UGX 2,500,000
+                    </div>
+
+                    <button
+                        onclick="addToCart('iPhone', 2500000)"
+                    >
+                        🛒 Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 3 -->
+            <div class="shop-product" data-category="laptops">
+
+                <div class="shop-product-image">
+                    <img src="images/IMG-20260829-WA0183.jpg" alt="HP Business Laptop product image">
+                </div>
+
+                <div class="shop-product-info">
+
+                    <span class="category">
+                        Laptops
+                    </span>
+
+                    <h3>HP Business Laptop</h3>
+
+                    <p>
+                        Fast and reliable laptop for work,
+                        school and business.
+                    </p>
+
+                    <div class="shop-price">
+                        UGX 1,800,000
+                    </div>
+
+                    <button
+                        onclick="addToCart('HP Business Laptop', 1800000)"
+                    >
+                        🛒 Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 4 -->
+            <div class="shop-product" data-category="accessories">
+
+                <div class="shop-product-image">
+                    <img src="images/IMG-20260829-WA0212.jpg" alt="Wireless Headphones product image">
+                </div>
+
+                <div class="shop-product-info">
+
+                    <span class="category">
+                        Accessories
+                    </span>
+
+                    <h3>Wireless Headphones</h3>
+
+                    <p>
+                        High-quality wireless headphones
+                        with clear sound.
+                    </p>
+
+                    <div class="shop-price">
+                        UGX 120,000
+                    </div>
+
+                    <button
+                        onclick="addToCart('Wireless Headphones', 120000)"
+                    >
+                        🛒 Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 5 -->
+            <div class="shop-product" data-category="accessories">
+
+                <div class="shop-product-image">
+                    <img src="images/IMG-20260829-WA0181.jpg" alt="Fast Phone Charger product image">
+                </div>
+
+                <div class="shop-product-info">
+
+                    <span class="category">
+                        Accessories
+                    </span>
+
+                    <h3>Fast Phone Charger</h3>
+
+                    <p>
+                        Fast charging adapter for smartphones.
+                    </p>
+
+                    <div class="shop-price">
+                        UGX 45,000
+                    </div>
+
+                    <button
+                        onclick="addToCart('Fast Phone Charger', 45000)"
+                    >
+                        🛒 Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 6 -->
+            <div class="shop-product" data-category="tv">
+
+                <div class="shop-product-image">
+                    <img src="images/IMG-20260829-WA0216.jpg" alt="Smart TV product image">
+                </div>
+
+                <div class="shop-product-info">
+
+                    <span class="category">
+                        TV & Entertainment
+                    </span>
+
+                    <h3>Smart TV</h3>
+
+                    <p>
+                        Enjoy movies, sports and entertainment
+                        on a modern Smart TV.
+                    </p>
+
+                    <div class="shop-price">
+                        UGX 1,500,000
+                    </div>
+
+                    <button
+                        onclick="addToCart('Smart TV', 1500000)"
+                    >
+                        🛒 Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-content">
+
+            <div>
+                <h2>ANDRU GENAL</h2>
+                <p>
+                    Quality Electronics You Can Trust.
+                </p>
+            </div>
+
+            <div>
+                <h3>Quick Links</h3>
+
+                <a href="INDEX.html">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div>
+                <h3>Contact</h3>
+
+                <p>📞 <a href="tel:+256700837197">0700 837197</a></p>
+                <p>📍 Uganda</p>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © 2026 ANDRU GENAL ELECTRONICS. All Rights Reserved.
+        </div>
+
+    </footer>
+
+    <a class="whatsapp-float" href="https://wa.me/256700837197" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">💬 WhatsApp</a>
+
+   <script>
+   // ==========================================
+// ANDRU GENAL ELECTRONICS
+// SHOPPING CART SYSTEM
+// ==========================================
+
+
+// ------------------------------------------
+// GET CART FROM LOCAL STORAGE
+// ------------------------------------------
+
+let cart = JSON.parse(localStorage.getItem("andruCart")) || [];
+
+
+// ------------------------------------------
+// ADD PRODUCT TO CART
+// ------------------------------------------
+
+function addToCart(name, price) {
+
+    // Check whether product already exists
+    let existingProduct = cart.find(
+        product => product.name === name
+    );
+
+
+    if (existingProduct) {
+
+        // If it exists, increase quantity
+        existingProduct.quantity++;
+
+    } else {
+
+        // If it doesn't exist, add new product
+        cart.push({
+            name: name,
+            price: price,
+            quantity: 1
+        });
+
+    }
+
+
+    // Save cart
+    saveCart();
+
+
+    // Update cart number
+    updateCartCount();
+
+
+    // Show confirmation
+    alert(name + " has been added to your cart!");
+}
+
+
+
+// ------------------------------------------
+// SAVE CART
+// ------------------------------------------
+
+function saveCart() {
+
+    localStorage.setItem(
+        "andruCart",
+        JSON.stringify(cart)
+    );
+
+}
+
+
+
+// ------------------------------------------
+// UPDATE CART NUMBER
+// ------------------------------------------
+
+function updateCartCount() {
+
+    const cartCount =
+        document.getElementById("cart-count");
+
+
+    // If cart-count doesn't exist on this page
+    if (!cartCount) {
+        return;
+    }
+
+
+    let totalItems = 0;
+
+
+    cart.forEach(function(product) {
+
+        totalItems += product.quantity;
+
+    });
+
+
+    cartCount.textContent = totalItems;
+
+}
+
+
+
+// ------------------------------------------
+// DISPLAY CART
+// ------------------------------------------
+
+function displayCart() {
+
+    const cartItems =
+        document.getElementById("cart-items");
+
+
+    const cartTotal =
+        document.getElementById("cart-total");
+
+
+    // If this isn't the cart page
+    if (!cartItems) {
+        return;
+    }
+
+
+    // Clear existing cart
+    cartItems.innerHTML = "";
+
+
+    let total = 0;
+
+
+    // --------------------------------------
+    // EMPTY CART
+    // --------------------------------------
+
+    if (cart.length === 0) {
+
+        cartItems.innerHTML = `
+
+            <div class="empty-cart">
+
+                <h2>Your cart is empty 🛒</h2>
+
+                <p>
+                    You haven't added any products yet.
+                </p>
+
+                <br>
+
+                <a
+                    href="shop.html"
+                    class="btn primary"
+                >
+                    Continue Shopping
+                </a>
+
+            </div>
+
+        `;
+
+
+        if (cartTotal) {
+
+            cartTotal.textContent = "UGX 0";
+
+        }
+
+
+        return;
+
+    }
+
+
+
+    // --------------------------------------
+    // DISPLAY PRODUCTS
+    // --------------------------------------
+
+    cart.forEach(function(product, index) {
+
+
+        let itemTotal =
+            product.price * product.quantity;
+
+
+        total += itemTotal;
+
+
+        cartItems.innerHTML += `
+
+            <div class="cart-item">
+
+
+                <div class="cart-item-info">
+
+                    <h3>
+                        ${product.name}
+                    </h3>
+
+                    <p>
+                        UGX ${product.price.toLocaleString()}
+                    </p>
+
+                </div>
+
+
+
+                <div class="quantity">
+
+                    <button
+                        onclick="decreaseQuantity(${index})"
+                    >
+                        −
+                    </button>
+
+
+                    <span>
+                        ${product.quantity}
+                    </span>
+
+
+                    <button
+                        onclick="increaseQuantity(${index})"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+
+
+                <strong>
+
+                    UGX ${itemTotal.toLocaleString()}
+
+                </strong>
+
+
+
+                <button
+                    class="remove-btn"
+                    onclick="removeProduct(${index})"
+                >
+                    Remove
+                </button>
+
+
+            </div>
+
+        `;
+
+    });
+
+
+
+    // --------------------------------------
+    // DISPLAY TOTAL
+    // --------------------------------------
+
+    if (cartTotal) {
+
+        cartTotal.textContent =
+            "UGX " + total.toLocaleString();
+
+    }
+
+}
+
+
+
+// ------------------------------------------
+// INCREASE PRODUCT QUANTITY
+// ------------------------------------------
+
+function increaseQuantity(index) {
+
+    cart[index].quantity++;
+
+
+    saveCart();
+
+
+    updateCartCount();
+
+
+    displayCart();
+
+}
+
+
+
+// ------------------------------------------
+// DECREASE PRODUCT QUANTITY
+// ------------------------------------------
+
+function decreaseQuantity(index) {
+
+
+    if (cart[index].quantity > 1) {
+
+        cart[index].quantity--;
+
+    } else {
+
+        // Remove product if quantity reaches zero
+        cart.splice(index, 1);
+
+    }
+
+
+    saveCart();
+
+
+    updateCartCount();
+
+
+    displayCart();
+
+}
+
+
+
+// ------------------------------------------
+// REMOVE PRODUCT
+// ------------------------------------------
+
+function removeProduct(index) {
+
+    cart.splice(index, 1);
+
+
+    saveCart();
+
+
+    updateCartCount();
+
+
+    displayCart();
+
+}
+
+
+
+// ------------------------------------------
+// SEARCH PRODUCTS
+// ------------------------------------------
+
+function searchProducts() {
+
+    const searchInput =
+        document.getElementById("search");
+
+
+    if (!searchInput) {
+        return;
+    }
+
+
+    const searchText =
+        searchInput.value.toLowerCase();
+
+
+    const products =
+        document.querySelectorAll(".shop-product");
+
+
+    products.forEach(function(product) {
+
+        const productName =
+            product.innerText.toLowerCase();
+
+
+        if (productName.includes(searchText)) {
+
+            product.style.display = "block";
+
+        } else {
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+
+// ------------------------------------------
+// FILTER PRODUCTS BY CATEGORY
+// ------------------------------------------
+
+function filterProducts() {
+
+    const categorySelect =
+        document.getElementById("category");
+
+
+    if (!categorySelect) {
+        return;
+    }
+
+
+    const selectedCategory =
+        categorySelect.value;
+
+
+    const products =
+        document.querySelectorAll(".shop-product");
+
+
+    products.forEach(function(product) {
+
+
+        const productCategory =
+            product.getAttribute("data-category");
+
+
+        if (
+            selectedCategory === "all" ||
+            productCategory === selectedCategory
+        ) {
+
+            product.style.display = "block";
+
+        } else {
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+
+// ------------------------------------------
+// PAGE LOAD
+// ------------------------------------------
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        updateCartCount();
+
+        displayCart();
+
+    }
+);</script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="app-data.js"></script>
+    <script>
+        (function () {
+            const productsContainer = document.getElementById('products');
+            if (!productsContainer) return;
+            productsContainer.hidden = true;
+
+            const categoryKeys = {
+                phones: 'phones',
+                laptops: 'laptops',
+                accessories: 'accessories',
+                'tv & entertainment': 'tv'
+            };
+
+            window.storeData.getProducts().then(function (inventory) {
+            productsContainer.replaceChildren();
+
+            inventory.forEach(function (product) {
+                const sellingPrice = product.sellingPrice;
+                const article = document.createElement('article');
+                article.className = 'shop-product';
+                article.dataset.category = categoryKeys[String(product.category).toLowerCase()] || 'all';
+
+                const imageFrame = document.createElement('div');
+                imageFrame.className = 'shop-product-image';
+                const image = document.createElement('img');
+                image.src = product.image;
+                image.alt = product.name + ' product image';
+                imageFrame.append(image);
+
+                const info = document.createElement('div');
+                info.className = 'shop-product-info';
+                const category = document.createElement('span');
+                category.className = 'category';
+                category.textContent = product.category;
+                const title = document.createElement('h3');
+                title.textContent = product.name;
+                const description = document.createElement('p');
+                description.textContent = product.description || 'Quality electronics from Andru Genal.';
+                const price = document.createElement('div');
+                price.className = 'shop-price';
+                price.textContent = sellingPrice == null ? 'Price not available' : 'UGX ' + Number(sellingPrice).toLocaleString();
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.textContent = Number(product.stock) <= 0 ? 'Out of Stock' : '🛒 Add to Cart';
+                button.disabled = Number(product.stock) <= 0 || sellingPrice == null;
+                if (sellingPrice != null && Number(product.stock) > 0) {
+                    button.addEventListener('click', function () {
+                        addToCart(product.name, Number(sellingPrice));
+                    });
+                }
+
+                info.append(category, title, description, price, button);
+                article.append(imageFrame, info);
+                productsContainer.append(article);
+            });
+
+            productsContainer.hidden = false;
+            searchProducts();
+            filterProducts();
+            }).catch(function (error) {
+                console.error(error);
+                const notice = document.createElement('p');
+                notice.setAttribute('role', 'alert');
+                notice.textContent = 'Products are temporarily unavailable. Please try again later.';
+                productsContainer.replaceChildren(notice);
+                productsContainer.hidden = false;
+            });
+        })();
+    </script>
+    <script>
+        (function () {
+            const container = document.getElementById('discount-news');
+            if (!container) return;
+
+            window.storeData.getNews().then(function (news) {
+            news.forEach(function (item) {
+                const article = document.createElement('article');
+                article.className = 'discount-news-card';
+
+                const title = document.createElement('h2');
+                title.textContent = item.title;
+                article.append(title);
+
+                const message = document.createElement('p');
+                message.textContent = item.message;
+                article.append(message);
+
+                if (item.date) {
+                    const date = document.createElement('p');
+                    date.className = 'discount-news-date';
+                    date.textContent = 'Coming ' + item.date;
+                    article.append(date);
+                }
+
+                container.append(article);
+            });
+            }).catch(function (error) {
+                console.error(error);
+                const notice = document.createElement('p');
+                notice.setAttribute('role', 'alert');
+                notice.textContent = 'Discount announcements are temporarily unavailable.';
+                container.append(notice);
+            });
+        })();
+    </script>
+    <script>
+        (function () {
+            const footer = document.querySelector('footer');
+            if (footer) {
+                footer.className = 'site-footer';
+                footer.innerHTML = `
+                    <div class="site-footer-content">
+                        <div><img class="footer-logo" src="images/andru-genal-logo.png" alt="Andru Genal Electronics"><p>Quality electronics, trusted service, and helpful support.</p><p>Serving customers across Uganda.</p></div>
+                        <div class="site-footer-links"><h3>Explore</h3><a href="INDEX.html">Home</a><a href="shop.html">Shop</a><a href="product.html">Products</a><a href="contact.html">Contact</a></div>
+                        <div><h3>Get in touch</h3><p><a href="tel:+256700837197">Call: 0700 837197</a></p><p><a href="https://wa.me/256700837197" target="_blank" rel="noopener noreferrer">WhatsApp support</a></p><p><a href="mailto:info@andrugenal.com">info@andrugenal.com</a></p></div>
+                    </div>
+                    <div class="site-footer-bottom">© ${new Date().getFullYear()} ANDRU GENAL ELECTRONICS. All rights reserved.</div>`;
+            }
+
+            const viewer = document.createElement('div');
+            viewer.className = 'product-image-viewer';
+            viewer.setAttribute('role', 'dialog');
+            viewer.setAttribute('aria-modal', 'true');
+            viewer.setAttribute('aria-label', 'Product image zoom');
+            viewer.innerHTML = '<div class="viewer-controls"><button type="button" data-zoom="out" aria-label="Zoom out">−</button><button type="button" data-zoom="in" aria-label="Zoom in">+</button><button type="button" data-zoom="close" aria-label="Close image">×</button></div><img alt=""><p class="viewer-hint">Use + / − or your mouse wheel to zoom. Press Escape to close.</p>';
+            document.body.append(viewer);
+            const enlargedImage = viewer.querySelector('img');
+            let zoom = 1;
+
+            function setZoom(value) {
+                zoom = Math.max(1, Math.min(4, value));
+                enlargedImage.style.transform = 'scale(' + zoom + ')';
+                enlargedImage.style.cursor = zoom > 1 ? 'zoom-out' : 'zoom-in';
+            }
+            function closeViewer() {
+                viewer.classList.remove('is-open');
+                document.body.style.overflow = '';
+            }
+
+            document.addEventListener('click', function (event) {
+                if (!(event.target instanceof Element)) return;
+                const productImage = event.target.closest('.product-image img, .shop-product-image img, .photo-card img, .catalog-card img');
+                if (productImage && !viewer.contains(productImage)) {
+                    enlargedImage.src = productImage.currentSrc || productImage.src;
+                    enlargedImage.alt = productImage.alt;
+                    setZoom(1);
+                    viewer.classList.add('is-open');
+                    document.body.style.overflow = 'hidden';
+                    return;
+                }
+                if (event.target === viewer) closeViewer();
+                const button = event.target.closest('[data-zoom]');
+                if (!button || !viewer.classList.contains('is-open')) return;
+                if (button.dataset.zoom === 'close') closeViewer();
+                if (button.dataset.zoom === 'in') setZoom(zoom + 0.25);
+                if (button.dataset.zoom === 'out') setZoom(zoom - 0.25);
+            });
+            enlargedImage.addEventListener('click', function () { setZoom(zoom > 1 ? 1 : 2); });
+            viewer.addEventListener('wheel', function (event) {
+                if (!viewer.classList.contains('is-open')) return;
+                event.preventDefault();
+                setZoom(zoom + (event.deltaY < 0 ? 0.2 : -0.2));
+            }, { passive: false });
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape') closeViewer();
+                if (viewer.classList.contains('is-open') && event.key === '+') setZoom(zoom + 0.25);
+                if (viewer.classList.contains('is-open') && event.key === '-') setZoom(zoom - 0.25);
+            });
+            document.querySelectorAll('.product-image img, .shop-product-image img, .photo-card img, .catalog-card img').forEach(function (image) {
+                image.classList.add('zoomable-product-image');
+                image.title = 'Click to zoom';
+            });
+        })();
+    </script>
+</body>
+</html>

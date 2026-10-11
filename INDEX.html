@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ANDRU GENAL ELECTRONICS</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    /* =========================
+   GENERAL
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #111827;
+    background: #ffffff;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+    background: #ffffff;
+    border-bottom: 1px solid #eeeeee;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 800;
+    color: #111827;
+    line-height: 1;
+}
+
+.logo span {
+    color: #2563eb;
+}
+
+.logo small {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #6b7280;
+    margin-top: 5px;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 30px;
+}
+
+.navbar nav a {
+    color: #374151;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.navbar nav a:hover,
+.navbar nav a.active {
+    color: #2563eb;
+}
+
+.cart-btn {
+    background: #2563eb;
+    color: white;
+    padding: 11px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 600px;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    gap: 40px;
+    padding: 80px 7%;
+    background: linear-gradient(135deg, #eff6ff, #ffffff);
+}
+
+.discount-news {
+    display: grid;
+    gap: 16px;
+    padding: 24px 7% 0;
+}
+
+.discount-news:empty {
+    display: none;
+}
+
+.discount-news-card {
+    padding: 20px 24px;
+    border: 1px solid #bfdbfe;
+    border-left: 5px solid #2563eb;
+    border-radius: 12px;
+    background: #eff6ff;
+}
+
+.discount-news-card h2 {
+    margin-bottom: 4px;
+    font-size: 20px;
+}
+
+.discount-news-card p {
+    color: #4b5563;
+}
+
+.discount-news-card .discount-news-date {
+    margin-top: 6px;
+    color: #1d4ed8;
+    font-weight: 700;
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-visual img {
+    width: 100%;
+    max-width: 500px;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 22px;
+    box-shadow: 0 25px 50px rgba(37, 99, 235, 0.15);
+}
+
+.welcome {
+    color: #2563eb;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-size: 58px;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    color: #2563eb;
+}
+
+.hero-text {
+    color: #6b7280;
+    font-size: 18px;
+    max-width: 600px;
+    margin-bottom: 35px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn.primary {
+    background: #2563eb;
+    color: white;
+}
+
+.btn.primary:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+.btn.secondary {
+    border: 2px solid #2563eb;
+    color: #2563eb;
+}
+
+.btn.secondary:hover {
+    background: #2563eb;
+    color: white;
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+.categories,
+.featured,
+.why-us {
+    padding: 90px 7%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title p {
+    color: #2563eb;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.section-title h2 {
+    font-size: 36px;
+    margin-top: 8px;
+}
+
+
+/* =========================
+   CATEGORIES
+========================= */
+
+.category-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.category-card {
+    padding: 30px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.category-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
+.category-icon {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.category-card h3 {
+    margin-bottom: 8px;
+}
+
+.category-card p {
+    color: #6b7280;
+    margin-bottom: 15px;
+}
+
+.category-card a {
+    color: #2563eb;
+    font-weight: bold;
+}
+
+
+/* =========================
+   PRODUCTS
+========================= */
+
+.featured {
+    background: #f9fafb;
+}
+
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+}
+
+.product-image {
+    height: 230px;
+    background: #eff6ff;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.product-info {
+    padding: 25px;
+}
+
+.product-info p {
+    color: #6b7280;
+    margin: 8px 0 20px;
+}
+
+.product-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.product-bottom strong {
+    color: #2563eb;
+}
+
+.product-bottom button {
+    border: none;
+    background: #111827;
+    color: white;
+    padding: 9px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.product-bottom button:hover {
+    background: #2563eb;
+}
+
+.view-all {
+    text-align: center;
+    margin-top: 45px;
+}
+
+
+/* =========================
+   WHY US
+========================= */
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.feature {
+    text-align: center;
+}
+
+.feature span {
+    display: inline-flex;
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    background: #dbeafe;
+    color: #2563eb;
+    border-radius: 50%;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.feature p {
+    color: #6b7280;
+}
+
+.service-comments {
+    padding: 80px 7%;
+    background: #f9fafb;
+}
+
+.comments-layout {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.comment-form {
+    display: grid;
+    gap: 14px;
+    align-content: start;
+    padding: 24px;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    background: white;
+}
+
+.comment-form label {
+    font-weight: 700;
+}
+
+.comment-form input,
+.comment-form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font: inherit;
+}
+
+.comment-form textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.comment-form button {
+    border: 0;
+    cursor: pointer;
+}
+
+.comment-status {
+    min-height: 1.5em;
+    color: #166534;
+}
+
+.comments-list {
+    display: grid;
+    gap: 14px;
+    align-content: start;
+}
+
+.customer-comment {
+    padding: 20px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background: white;
+    overflow-wrap: anywhere;
+}
+
+.customer-comment p {
+    white-space: pre-wrap;
+    color: #4b5563;
+    margin-top: 8px;
+}
+
+.customer-comment time {
+    display: block;
+    margin-top: 10px;
+    color: #9ca3af;
+    font-size: 13px;
+}
+
+.comments-empty {
+    color: #6b7280;
+    text-align: center;
+    padding: 28px;
+    border: 1px dashed #cbd5e1;
+    border-radius: 12px;
+}
+
+
+/* =========================
+   CTA
+========================= */
+
+.cta {
+    text-align: center;
+    padding: 90px 20px;
+    background: #111827;
+    color: white;
+}
+
+.cta h2 {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.cta p {
+    color: #d1d5db;
+    margin-bottom: 30px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #030712;
+    color: white;
+}
+
+.footer-content {
+    padding: 60px 7%;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 50px;
+}
+
+.footer-content h2,
+.footer-content h3 {
+    margin-bottom: 15px;
+}
+
+.footer-content p {
+    color: #9ca3af;
+}
+
+.footer-content a {
+    display: block;
+    color: #9ca3af;
+    margin-bottom: 8px;
+}
+
+.footer-content a:hover {
+    color: white;
+}
+
+.copyright {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #1f2937;
+    color: #9ca3af;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        padding: 0 4%;
+    }
+
+    .navbar nav {
+        gap: 12px;
+    }
+
+    .category-container,
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .products-container {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 45px;
+    }
+
+    .comments-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .navbar {
+        height: auto;
+        padding: 20px;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .navbar nav {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .category-container,
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding: 60px 20px;
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .service-comments {
+        padding: 60px 20px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+.whatsapp-float {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 1100;
+    padding: 13px 18px;
+    border-radius: 999px;
+    background: #25d366;
+    color: #064e3b;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+}
+
+.whatsapp-float:hover {
+    background: #1fbd5a;
+}
+
+.site-footer {
+    background: #030712;
+    color: #e5e7eb;
+}
+
+.site-footer-content {
+    padding: 54px 7% 38px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 42px;
+}
+
+.site-footer h2,
+.site-footer h3 {
+    color: #fff;
+    margin: 0 0 14px;
+}
+
+.site-footer p {
+    color: #9ca3af;
+    margin: 6px 0;
+}
+
+.site-footer a {
+    color: #cbd5e1;
+}
+
+.site-footer a:hover {
+    color: #fff;
+}
+
+.site-footer-links a {
+    display: block;
+    margin: 7px 0;
+}
+
+.site-footer-bottom {
+    text-align: center;
+    padding: 18px 20px;
+    border-top: 1px solid #1f2937;
+    color: #9ca3af;
+    font-size: 14px;
+}
+
+.zoomable-product-image {
+    cursor: zoom-in;
+}
+
+.product-image-viewer {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 70px 20px 30px;
+    background: rgba(3, 7, 18, 0.94);
+}
+
+.product-image-viewer.is-open {
+    display: flex;
+}
+
+.product-image-viewer img {
+    max-width: min(92vw, 1200px);
+    max-height: 82vh;
+    object-fit: contain;
+    transform: scale(1);
+    transition: transform 0.15s ease;
+    cursor: zoom-in;
+}
+
+.viewer-controls {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 1;
+}
+
+.viewer-controls button {
+    width: 46px;
+    height: 46px;
+    border: 1px solid #ffffff55;
+    border-radius: 50%;
+    background: #111827;
+    color: #fff;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.viewer-hint {
+    position: absolute;
+    bottom: 16px;
+    color: #e5e7eb;
+    font-size: 14px;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .site-footer-content {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 42px 20px 28px;
+    }
+}
+.navbar nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.navbar nav a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 8px 14px;
+    border: 1px solid #e2e8f0;
+    border-radius: 9px;
+    background: #fff;
+    color: #374151;
+    font-size: 14px;
+    font-weight: 700;
+    transition: color .2s ease, background .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+.navbar nav a:hover {
+    border-color: #93c5fd;
+    background: #eff6ff;
+    color: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+.navbar nav a.active {
+    border-color: #2563eb;
+    background: #2563eb;
+    color: #fff;
+}
+
+.navbar nav a:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 2px;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.navbar .logo img {
+    display: block;
+    width: auto;
+    height: 64px;
+    object-fit: contain;
+}
+
+.site-footer-content > div {
+    min-width: 0;
+}
+
+.site-footer .footer-logo {
+    display: block;
+    width: 176px;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 14px;
+}
+
+.site-footer a {
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 900px) {
+    .navbar {
+        height: auto;
+        min-height: 80px;
+        padding: 12px 4%;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .navbar nav {
+        order: 3;
+        width: 100%;
+    }
+}
+</style>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header class="navbar">
+
+        <a class="logo" href="INDEX.html" aria-label="Andru Genal Electronics home">
+            <img src="images/andru-genal-logo.png" alt="Andru Genal Electronics">
+        </a>
+
+        <nav>
+            <a href="INDEX.html" class="active">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="inventory.html">Inventory</a>
+            <a href="product.html">Products</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <a href="cart.html" class="cart-btn">
+            🛒 Cart
+        </a>
+
+    </header>
+
+    <section class="discount-news" id="discount-news" aria-label="Discount news"></section>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+
+        <div class="hero-content">
+<MARQUEE>THE BEST OR NOTHING📱>>>🎧>>>📺</MARQUEE>
+            <p class="welcome">WELCOME TO ANDRU GENAL ELECTRONICS</p>
+
+            <h1>
+                Quality Electronics<br>
+                <span>For Your Everyday Life</span>
+            </h1>
+
+            <p class="hero-text">
+                Discover quality electronics at affordable prices.
+                Shop with confidence and get reliable products
+                delivered to you.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="shop.html" class="btn primary">
+                    Shop Now
+                </a>
+
+                <a href="contact.html" class="btn secondary">
+                    Contact Us
+                </a>
+            </div>
+
+        </div>
+
+        <div class="hero-visual">
+            <img src="images/IMG-20260829-WA0173.jpg" alt="Featured electronics display">
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORIES -->
+    <section class="categories">
+
+        <div class="section-title">
+            <p>SHOP BY CATEGORY</p>
+            <h2>What Are You Looking For?</h2>
+        </div>
+
+        <div class="category-container">
+
+            <div class="category-card">
+                <div class="category-icon">📱</div>
+                <h3>Phones</h3>
+                <p>Smartphones and accessories</p>
+                <a href="shop.html">View Products →</a>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">💻</div>
+                <h3>Laptops</h3>
+                <p>Powerful laptops for work and school</p>
+                <a href="shop.html">View Products →</a>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">🎧</div>
+                <h3>Accessories</h3>
+                <p>Headphones, chargers and more</p>
+                <a href="shop.html">View Products →</a>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">📺</div>
+                <h3>TV & Entertainment</h3>
+                <p>Entertainment electronics</p>
+                <a href="shop.html">View Products →</a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURED PRODUCTS -->
+    <section class="featured">
+
+        <div class="section-title">
+            <p>OUR PRODUCTS</p>
+            <h2>Featured Products</h2>
+        </div>
+
+        <div class="products-container">
+
+            <div class="product-card" data-product-id="1">
+
+                <div class="product-image">
+                    <img src="images/IMG-20260829-WA0174.jpg" alt="Samsung Galaxy Smartphone product photo">
+                </div>
+
+                <div class="product-info">
+                    <h3>Samsung Galaxy Smartphone</h3>
+                    <p>Latest smartphone technology</p>
+
+                    <div class="product-bottom">
+                        <strong>UGX 850,000</strong>
+
+                        <button onclick="addToCart('Smartphone', 850000)">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="product-card" data-product-id="3">
+
+                <div class="product-image">
+                    <img src="images/IMG-20260829-WA0183.jpg" alt="Laptop product photo">
+                </div>
+
+                <div class="product-info">
+                    <h3>HP Business Laptop</h3>
+                    <p>Fast and reliable laptop</p>
+
+                    <div class="product-bottom">
+                        <strong>UGX 1,800,000</strong>
+
+                        <button onclick="addToCart('Business Laptop', 1800000)">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="product-card" data-product-id="4">
+
+                <div class="product-image">
+                    <img src="images/IMG-20260829-WA0212.jpg" alt="Wireless headphones product photo">
+                </div>
+
+                <div class="product-info">
+                    <h3>Wireless Headphones</h3>
+                    <p>Clear sound and comfortable design</p>
+
+                    <div class="product-bottom">
+                        <strong>UGX 120,000</strong>
+
+                        <button onclick="addToCart('Wireless Headphones', 120000)">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="view-all">
+            <a href="shop.html" class="btn primary">
+                View All Products
+            </a>
+        </div>
+
+    </section>
+
+
+    <!-- WHY CHOOSE US -->
+    <section class="why-us">
+
+        <div class="section-title">
+            <p>WHY CHOOSE US</p>
+            <h2>Shopping Made Easy</h2>
+        </div>
+
+        <div class="features">
+
+            <div class="feature">
+                <span>✓</span>
+                <h3>Quality Products</h3>
+                <p>We provide reliable electronics.</p>
+            </div>
+
+            <div class="feature">
+                <span>✓</span>
+                <h3>Affordable Prices</h3>
+                <p>Great products at competitive prices.</p>
+            </div>
+
+            <div class="feature">
+                <span>✓</span>
+                <h3>Easy Ordering</h3>
+                <p>Place your order quickly and easily.</p>
+            </div>
+
+            <div class="feature">
+                <span>✓</span>
+                <h3>Customer Support</h3>
+                <p>We are ready to help our customers.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CUSTOMER SERVICE COMMENTS -->
+    <section class="service-comments">
+        <div class="section-title">
+            <p>YOUR FEEDBACK</p>
+            <h2>Share a Note About Our Service</h2>
+        </div>
+
+        <div class="comments-layout">
+            <form class="comment-form" id="comment-form">
+                <label for="comment-name">Your name (optional)</label>
+                <input type="text" id="comment-name" maxlength="80" autocomplete="name" placeholder="Name">
+
+                <label for="comment-message">Your note</label>
+                <textarea id="comment-message" maxlength="1000" required placeholder="Tell us about your experience with our service..."></textarea>
+
+                <button type="submit" class="btn primary">Post Note</button>
+                <p class="comment-status" id="comment-status" role="status" aria-live="polite"></p>
+            </form>
+
+            <div class="comments-list" id="comments-list" aria-live="polite"></div>
+        </div>
+    </section>
+
+
+    <!-- CALL TO ACTION -->
+    <section class="cta">
+
+        <h2>Looking For Something?</h2>
+
+        <p>
+            Browse our products or contact us and
+            let us help you find what you need.
+        </p>
+
+        <a href="shop.html" class="btn primary">
+            Start Shopping
+        </a>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-content">
+
+            <div>
+                <h2>ANDRU GENAL</h2>
+                <p>Quality Electronics You Can Trust.</p>
+            </div>
+
+            <div>
+                <h3>Quick Links</h3>
+                <a href="INDEX.html">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="cart.html">Cart</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div>
+                <h3>Contact</h3>
+                <p>📞 <a href="tel:+256700837197">0700 837197</a></p>
+                <p>📍 Uganda</p>
+                <p>✉️ info@andrugenal.com</p>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © 2026 ANDRU GENAL ELECTRONICS. All Rights Reserved.
+        </div>
+
+    </footer>
+
+    <a class="whatsapp-float" href="https://wa.me/256700837197" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">💬 WhatsApp</a>
+
+    <script>
+        // =============================
+// SHOPPING CART
+// =============================
+
+let cart = JSON.parse(localStorage.getItem("andruCart")) || [];
+
+
+// ADD PRODUCT TO CART
+function addToCart(name, price) {
+
+    const existingProduct = cart.find(
+        product => product.name === name
+    );
+
+    if (existingProduct) {
+        existingProduct.quantity++;
+    } else {
+        cart.push({
+            name: name,
+            price: price,
+            quantity: 1
+        });
+    }
+
+    saveCart();
+
+    updateCartCount();
+
+    alert(name + " has been added to your cart!");
+}
+
+
+// SAVE CART
+function saveCart() {
+    localStorage.setItem(
+        "andruCart",
+        JSON.stringify(cart)
+    );
+}
+
+
+// UPDATE CART NUMBER
+function updateCartCount() {
+
+    const cartCount = document.getElementById("cart-count");
+
+    if (!cartCount) return;
+
+    let totalItems = 0;
+
+    cart.forEach(product => {
+        totalItems += product.quantity;
+    });
+
+    cartCount.textContent = totalItems;
+}
+
+
+// INCREASE QUANTITY
+function increaseQuantity(index) {
+
+    cart[index].quantity++;
+
+    saveCart();
+
+    displayCart();
+}
+
+
+// DECREASE QUANTITY
+function decreaseQuantity(index) {
+
+    if (cart[index].quantity > 1) {
+
+        cart[index].quantity--;
+
+    } else {
+
+        cart.splice(index, 1);
+
+    }
+
+    saveCart();
+
+    displayCart();
+}
+
+
+// REMOVE PRODUCT
+function removeProduct(index) {
+
+    cart.splice(index, 1);
+
+    saveCart();
+
+    displayCart();
+}
+
+
+// DISPLAY CART
+function displayCart() {
+
+    const cartContainer =
+        document.getElementById("cart-items");
+
+    const cartTotal =
+        document.getElementById("cart-total");
+
+    if (!cartContainer) return;
+
+    cartContainer.innerHTML = "";
+
+    let total = 0;
+
+
+    if (cart.length === 0) {
+
+        cartContainer.innerHTML = `
+            <div class="empty-cart">
+                <h2>Your cart is empty</h2>
+                <p>Add some products to your cart.</p>
+
+                <a href="shop.html" class="btn primary">
+                    Continue Shopping
+                </a>
+            </div>
+        `;
+
+        if (cartTotal) {
+            cartTotal.textContent = "UGX 0";
+        }
+
+        return;
+    }
+
+
+    cart.forEach((product, index) => {
+
+        const itemTotal =
+            product.price * product.quantity;
+
+        total += itemTotal;
+
+
+        cartContainer.innerHTML += `
+
+            <div class="cart-item">
+
+                <div class="cart-item-info">
+
+                    <h3>${product.name}</h3>
+
+                    <p>
+                        UGX ${product.price.toLocaleString()}
+                    </p>
+
+                </div>
+
+
+                <div class="quantity">
+
+                    <button onclick="decreaseQuantity(${index})">
+                        −
+                    </button>
+
+                    <span>
+                        ${product.quantity}
+                    </span>
+
+                    <button onclick="increaseQuantity(${index})">
+                        +
+                    </button>
+
+                </div>
+
+
+                <strong>
+                    UGX ${itemTotal.toLocaleString()}
+                </strong>
+
+
+                <button
+                    class="remove-btn"
+                    onclick="removeProduct(${index})"
+                >
+                    Remove
+                </button>
+
+            </div>
+
+        `;
+    });
+
+
+    if (cartTotal) {
+
+        cartTotal.textContent =
+            "UGX " + total.toLocaleString();
+
+    }
+}
+
+
+// RUN WHEN PAGE LOADS
+document.addEventListener("DOMContentLoaded", function () {
+
+    updateCartCount();
+
+    displayCart();
+
+});
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="app-data.js"></script>
+    <script>
+        (function () {
+            const container = document.getElementById('discount-news');
+            if (!container) return;
+
+            window.storeData.getNews().then(function (news) {
+            news.forEach(function (item) {
+                const article = document.createElement('article');
+                article.className = 'discount-news-card';
+
+                const title = document.createElement('h2');
+                title.textContent = item.title;
+                article.append(title);
+
+                const message = document.createElement('p');
+                message.textContent = item.message;
+                article.append(message);
+
+                if (item.date) {
+                    const date = document.createElement('p');
+                    date.className = 'discount-news-date';
+                    date.textContent = 'Coming ' + item.date;
+                    article.append(date);
+                }
+
+                container.append(article);
+            });
+            }).catch(function (error) {
+                console.error(error);
+                const notice = document.createElement('p');
+                notice.setAttribute('role', 'alert');
+                notice.textContent = 'Discount announcements are temporarily unavailable.';
+                container.append(notice);
+            });
+        })();
+    </script>
+    <script>
+        (function () {
+            const featuredCards = document.querySelectorAll('.product-card[data-product-id]');
+            featuredCards.forEach(function (card) { card.hidden = true; });
+            window.storeData.getProducts().then(function (inventory) {
+
+            featuredCards.forEach(function (card) {
+                const product = inventory.find(function (item) {
+                    return String(item.id) === card.dataset.productId;
+                });
+                if (!product) {
+                    card.hidden = true;
+                    return;
+                }
+                card.hidden = false;
+
+                const name = product.name;
+                const price = product.sellingPrice ?? product.price;
+                const heading = card.querySelector('h3');
+                const image = card.querySelector('.product-image img');
+                const priceLabel = card.querySelector('.product-bottom strong');
+                const button = card.querySelector('.product-bottom button');
+
+                heading.textContent = name;
+                image.src = product.image;
+                image.alt = name + ' product photo';
+                priceLabel.textContent = price == null ? 'Price not available' : 'UGX ' + Number(price).toLocaleString();
+                button.removeAttribute('onclick');
+                button.disabled = price == null || Number(product.stock) <= 0;
+                button.addEventListener('click', function () {
+                    if (typeof window.addToCart === 'function') {
+                        window.addToCart(name, Number(price));
+                        return;
+                    }
+
+                    const cart = JSON.parse(localStorage.getItem('andruCart') || '[]');
+                    const existing = cart.find(function (item) { return item.name === name; });
+                    if (existing) existing.quantity += 1;
+                    else cart.push({ name: name, price: Number(price), quantity: 1 });
+                    localStorage.setItem('andruCart', JSON.stringify(cart));
+                    alert(name + ' has been added to your cart!');
+                });
+            });
+            }).catch(function (error) {
+                console.error(error);
+                const notice = document.createElement('p');
+                notice.setAttribute('role', 'alert');
+                notice.textContent = 'Featured products are temporarily unavailable.';
+                document.querySelector('.products-container')?.prepend(notice);
+            });
+        })();
+    </script>
+    <script>
+        (function () {
+            const storageKey = 'andruServiceComments';
+            const form = document.getElementById('comment-form');
+            const list = document.getElementById('comments-list');
+            const status = document.getElementById('comment-status');
+            if (!form || !list || !status) return;
+
+            function renderComments() {
+                list.replaceChildren();
+                window.storeData.getComments().then(function (comments) {
+
+                if (!comments.length) {
+                    const empty = document.createElement('p');
+                    empty.className = 'comments-empty';
+                    empty.textContent = 'No notes yet. Be the first to share feedback.';
+                    list.append(empty);
+                    return;
+                }
+
+                comments.slice().reverse().forEach(function (comment) {
+                    const article = document.createElement('article');
+                    article.className = 'customer-comment';
+
+                    const name = document.createElement('strong');
+                    name.textContent = comment.name || 'Customer';
+
+                    const message = document.createElement('p');
+                    message.textContent = comment.message;
+
+                    const date = document.createElement('time');
+                    date.dateTime = comment.created_at;
+                    date.textContent = new Date(comment.created_at).toLocaleString();
+
+                    article.append(name, message, date);
+                    list.append(article);
+                });
+                }).catch(function (error) {
+                    console.error(error);
+                    const notice = document.createElement('p');
+                    notice.className = 'comments-empty';
+                    notice.setAttribute('role', 'alert');
+                    notice.textContent = 'Customer notes are temporarily unavailable.';
+                    list.replaceChildren(notice);
+                });
+            }
+
+            form.addEventListener('submit', async function (event) {
+                event.preventDefault();
+
+                const name = document.getElementById('comment-name').value.trim();
+                const message = document.getElementById('comment-message').value.trim();
+                if (!message) {
+                    status.textContent = 'Please enter a note before posting.';
+                    return;
+                }
+
+                try {
+                    await window.storeData.addComment(name.slice(0, 80), message.slice(0, 1000));
+                    form.reset();
+                    status.textContent = 'Thank you. Your note has been posted.';
+                    renderComments();
+                } catch (error) {
+                    console.error(error);
+                    status.textContent = 'Your note could not be posted. Please try again later.';
+                }
+            });
+
+            renderComments();
+        })();
+    </script>
+    <script>
+        (function () {
+            function installSiteFooter() {
+                const footer = document.querySelector('footer');
+                if (!footer) return;
+                footer.className = 'site-footer';
+                footer.innerHTML = `
+                    <div class="site-footer-content">
+                        <div>
+                            <img class="footer-logo" src="images/andru-genal-logo.png" alt="Andru Genal Electronics">
+                            <p>Quality electronics, trusted service, and helpful support.</p>
+                            <p>Serving customers across Uganda.</p>
+                        </div>
+                        <div class="site-footer-links">
+                            <h3>Explore</h3>
+                            <a href="INDEX.html">Home</a>
+                            <a href="shop.html">Shop</a>
+                            <a href="product.html">Products</a>
+                            <a href="contact.html">Contact</a>
+                        </div>
+                        <div>
+                            <h3>Get in touch</h3>
+                            <p><a href="tel:+256700837197">Call: 0700 837197</a></p>
+                            <p><a href="https://wa.me/256700837197" target="_blank" rel="noopener noreferrer">WhatsApp support</a></p>
+                            <p><a href="mailto:info@andrugenal.com">info@andrugenal.com</a></p>
+                        </div>
+                    </div>
+                    <div class="site-footer-bottom">© ${new Date().getFullYear()} ANDRU GENAL ELECTRONICS. All rights reserved.</div>
+                `;
+            }
+            installSiteFooter();
+
+            const viewer = document.createElement('div');
+            viewer.className = 'product-image-viewer';
+            viewer.setAttribute('role', 'dialog');
+            viewer.setAttribute('aria-modal', 'true');
+            viewer.setAttribute('aria-label', 'Product image zoom');
+            viewer.innerHTML = '<div class="viewer-controls"><button type="button" data-zoom="out" aria-label="Zoom out">−</button><button type="button" data-zoom="in" aria-label="Zoom in">+</button><button type="button" data-zoom="close" aria-label="Close image">×</button></div><img alt=""><p class="viewer-hint">Use + / − or your mouse wheel to zoom. Press Escape to close.</p>';
+            document.body.append(viewer);
+
+            const viewerImage = viewer.querySelector('img');
+            let zoom = 1;
+            function setZoom(nextZoom) {
+                zoom = Math.max(1, Math.min(4, nextZoom));
+                viewerImage.style.transform = 'scale(' + zoom + ')';
+                viewerImage.style.cursor = zoom > 1 ? 'zoom-out' : 'zoom-in';
+            }
+            function closeViewer() {
+                viewer.classList.remove('is-open');
+                document.body.style.overflow = '';
+            }
+
+            document.addEventListener('click', function (event) {
+                const image = event.target.closest('.product-image img, .shop-product-image img, .photo-card img, .catalog-card img, .hero-visual img');
+                if (image && !viewer.contains(image)) {
+                    viewerImage.src = image.currentSrc || image.src;
+                    viewerImage.alt = image.alt;
+                    setZoom(1);
+                    viewer.classList.add('is-open');
+                    document.body.style.overflow = 'hidden';
+                    return;
+                }
+                if (event.target === viewer) closeViewer();
+                const control = event.target.closest('[data-zoom]');
+                if (!control || !viewer.classList.contains('is-open')) return;
+                if (control.dataset.zoom === 'close') closeViewer();
+                if (control.dataset.zoom === 'in') setZoom(zoom + 0.25);
+                if (control.dataset.zoom === 'out') setZoom(zoom - 0.25);
+            });
+
+            viewerImage.addEventListener('click', function () {
+                setZoom(zoom > 1 ? 1 : 2);
+            });
+            viewer.addEventListener('wheel', function (event) {
+                if (!viewer.classList.contains('is-open')) return;
+                event.preventDefault();
+                setZoom(zoom + (event.deltaY < 0 ? 0.2 : -0.2));
+            }, { passive: false });
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape') closeViewer();
+                if (viewer.classList.contains('is-open') && event.key === '+') setZoom(zoom + 0.25);
+                if (viewer.classList.contains('is-open') && event.key === '-') setZoom(zoom - 0.25);
+            });
+            document.querySelectorAll('.product-image img, .shop-product-image img, .photo-card img, .catalog-card img, .hero-visual img').forEach(function (image) {
+                image.classList.add('zoomable-product-image');
+                image.title = 'Click to zoom';
+            });
+        })();
+    </script>
+</body>
+</html>

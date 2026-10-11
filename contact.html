@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | ANDRU GENAL ELECTRONICS</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: Arial, sans-serif; color: #111827; line-height: 1.6; background: #f8fafc; }
+        a { text-decoration: none; }
+        .navbar { min-height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 12px 7%; background: white; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 5; }
+        .logo { font-size: 22px; font-weight: 800; color: #111827; line-height: 1; }
+        .logo span { color: #2563eb; }
+        .logo small { display: block; margin-top: 5px; color: #6b7280; font-size: 9px; letter-spacing: 3px; }
+        nav { display: flex; gap: 24px; flex-wrap: wrap; }
+        nav a { color: #374151; font-weight: 600; }
+        nav a:hover, nav a.active { color: #2563eb; }
+        .cart-link { padding: 10px 16px; border-radius: 8px; background: #2563eb; color: white; font-weight: 700; }
+        main { max-width: 1050px; margin: 0 auto; padding: 70px 24px 90px; }
+        .intro { text-align: center; margin-bottom: 38px; }
+        .intro p { color: #2563eb; font-weight: 700; letter-spacing: 2px; }
+        .intro h1 { margin: 8px 0; font-size: clamp(36px, 5vw, 48px); }
+        .intro span { color: #6b7280; }
+        .contact-card { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+        .contact-method { padding: 28px; border: 1px solid #e5e7eb; border-radius: 16px; background: white; box-shadow: 0 12px 28px #1118270b; }
+        .contact-method h2 { margin: 0 0 8px; font-size: 21px; }
+        .contact-method p { margin: 0 0 16px; color: #6b7280; }
+        .contact-method a { color: #2563eb; font-size: 20px; font-weight: 700; overflow-wrap: anywhere; }
+        .contact-method a.whatsapp-link { color: #128c4a; }
+        .whatsapp-float { position: fixed; right: 22px; bottom: 22px; z-index: 20; padding: 13px 18px; border-radius: 999px; background: #25d366; color: #064e3b; box-shadow: 0 8px 22px #0003; font-weight: 700; }
+        .whatsapp-float:hover { background: #1fbd5a; }
+        .site-footer { background: #030712; color: #e5e7eb; }
+        .site-footer-content { padding: 54px 7% 38px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 42px; }
+        .site-footer h2, .site-footer h3 { color: #fff; margin: 0 0 14px; }
+        .site-footer p { color: #9ca3af; margin: 6px 0; }
+        .site-footer a { color: #cbd5e1; }
+        .site-footer a:hover { color: #fff; }
+        .site-footer-links a { display: block; margin: 7px 0; }
+        .site-footer-bottom { text-align: center; padding: 18px 20px; border-top: 1px solid #1f2937; color: #9ca3af; font-size: 14px; }
+        .product-image-viewer { position: fixed; inset: 0; z-index: 2000; display: none; align-items: center; justify-content: center; padding: 70px 20px 30px; background: rgba(3,7,18,.94); }
+        .product-image-viewer.is-open { display: flex; }
+        .product-image-viewer img { max-width: min(92vw,1200px); max-height: 82vh; object-fit: contain; transform: scale(1); transition: transform .15s ease; cursor: zoom-in; }
+        .viewer-controls { position: absolute; top: 18px; right: 20px; display: flex; gap: 10px; z-index: 1; }
+        .viewer-controls button { width: 46px; height: 46px; border: 1px solid #ffffff55; border-radius: 50%; background: #111827; color: white; font-size: 25px; cursor: pointer; }
+        .viewer-hint { position: absolute; bottom: 16px; color: #e5e7eb; font-size: 14px; text-align: center; }
+        @media (max-width: 650px) {
+            .navbar { justify-content: center; }
+            nav { justify-content: center; }
+            .contact-card { grid-template-columns: 1fr; }
+            .site-footer-content { grid-template-columns: 1fr; gap: 24px; padding: 42px 20px 28px; }
+        }
+        .navbar nav { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
+        .navbar nav a { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 8px 14px; border: 1px solid #e2e8f0; border-radius: 9px; background: #fff; color: #374151; font-size: 14px; font-weight: 700; transition: color .2s ease, background .2s ease, border-color .2s ease, transform .2s ease; }
+        .navbar nav a:hover { border-color: #93c5fd; background: #eff6ff; color: #1d4ed8; transform: translateY(-1px); }
+        .navbar nav a.active { border-color: #2563eb; background: #2563eb; color: #fff; }
+        .navbar nav a:focus-visible { outline: 3px solid #93c5fd; outline-offset: 2px; }
+        .navbar .logo { display: flex; align-items: center; flex-shrink: 0; }
+        .navbar .logo img { display: block; width: auto; height: 64px; object-fit: contain; }
+        .site-footer-content > div { min-width: 0; }
+        .site-footer .footer-logo { display: block; width: 176px; max-width: 100%; height: auto; margin-bottom: 14px; }
+        .site-footer a { overflow-wrap: anywhere; }
+        @media (max-width: 900px) { .navbar { flex-wrap: wrap; } }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <a class="logo" href="INDEX.html" aria-label="Andru Genal Electronics home"><img src="images/andru-genal-logo.png" alt="Andru Genal Electronics"></a>
+        <nav aria-label="Main navigation">
+            <a href="INDEX.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="inventory.html">Inventory</a>
+            <a href="product.html">Products</a>
+            <a href="contact.html" class="active">Contact</a>
+        </nav>
+        <a class="cart-link" href="cart.html">🛒 Cart</a>
+    </header>
+
+    <main>
+        <section class="intro">
+            <p>WE'RE HERE TO HELP</p>
+            <h1>Contact Us</h1>
+            <span>Call or message Andru Genal Electronics.</span>
+        </section>
+        <section class="contact-card" aria-label="Contact options">
+            <article class="contact-method">
+                <h2>Call us</h2>
+                <p>Speak with our team about products, orders, or support.</p>
+                <a href="tel:+256700837197">0700 837197</a>
+            </article>
+            <article class="contact-method">
+                <h2>WhatsApp us</h2>
+                <p>Send us a message and we will get back to you.</p>
+                <a class="whatsapp-link" href="https://wa.me/256700837197" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+            </article>
+        </section>
+    </main>
+
+    <footer>📍 Uganda · © 2026 ANDRU GENAL ELECTRONICS</footer>
+    <a class="whatsapp-float" href="https://wa.me/256700837197" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">💬 WhatsApp</a>
+    <script>
+        (function () {
+            const footer = document.querySelector('footer');
+            if (footer) {
+                footer.className = 'site-footer';
+                footer.innerHTML = `
+                    <div class="site-footer-content">
+                        <div><img class="footer-logo" src="images/andru-genal-logo.png" alt="Andru Genal Electronics"><p>Quality electronics, trusted service, and helpful support.</p><p>Serving customers across Uganda.</p></div>
+                        <div class="site-footer-links"><h3>Explore</h3><a href="INDEX.html">Home</a><a href="shop.html">Shop</a><a href="product.html">Products</a><a href="contact.html">Contact</a></div>
+                        <div><h3>Get in touch</h3><p><a href="tel:+256700837197">Call: 0700 837197</a></p><p><a href="https://wa.me/256700837197" target="_blank" rel="noopener noreferrer">WhatsApp support</a></p><p><a href="mailto:info@andrugenal.com">info@andrugenal.com</a></p></div>
+                    </div>
+                    <div class="site-footer-bottom">© ${new Date().getFullYear()} ANDRU GENAL ELECTRONICS. All rights reserved.</div>`;
+            }
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | ANDRU GENAL ELECTRONICS</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: Arial, sans-serif; color: #111827; line-height: 1.6; }
+        a { text-decoration: none; }
+        .navbar { min-height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 12px 7%; background: white; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 5; }
+        .logo { font-size: 22px; font-weight: 800; color: #111827; line-height: 1; }
+        .logo span { color: #2563eb; }
+        .logo small { display: block; margin-top: 5px; color: #6b7280; font-size: 9px; letter-spacing: 3px; }
+        nav { display: flex; gap: 24px; flex-wrap: wrap; }
+        nav a { color: #374151; font-weight: 600; }
+        nav a:hover, nav a.active { color: #2563eb; }
+        .cart-link { padding: 10px 16px; border-radius: 8px; background: #2563eb; color: white; font-weight: 700; }
+        .page-header { padding: 64px 20px; text-align: center; background: #eff6ff; }
+        .page-header p { color: #2563eb; font-weight: 700; letter-spacing: 2px; }
+        .page-header h1 { margin: 8px 0; font-size: clamp(34px, 5vw, 48px); }
+        .page-header span { color: #6b7280; }
+        .gallery-tools { display: flex; gap: 12px; max-width: 1200px; margin: 0 auto; padding: 28px 24px 0; }
+        .gallery-tools input { width: 100%; padding: 13px 15px; border: 1px solid #d1d5db; border-radius: 8px; font: inherit; }
+        .catalog-section { padding: 52px 7% 12px; }
+        .catalog-heading { margin: 0 0 8px; font-size: 30px; }
+        .catalog-intro { margin: 0 0 24px; color: #6b7280; }
+        .catalog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+        .catalog-card { overflow: hidden; border: 1px solid #e5e7eb; border-radius: 12px; background: white; }
+        .catalog-card img { display: block; width: 100%; height: 230px; object-fit: cover; background: #f3f4f6; }
+        .catalog-info { padding: 18px; }
+        .catalog-category { color: #2563eb; font-size: 13px; font-weight: 700; text-transform: uppercase; }
+        .catalog-info h3 { margin: 6px 0; }
+        .catalog-info p { min-height: 48px; color: #6b7280; }
+        .catalog-price { margin: 14px 0; color: #2563eb; font-size: 19px; font-weight: 700; }
+        .catalog-info button { width: 100%; padding: 12px; border: 0; border-radius: 8px; background: #111827; color: white; font-weight: 700; cursor: pointer; }
+        .catalog-info button:hover { background: #2563eb; }
+        .catalog-info button:disabled { background: #9ca3af; cursor: not-allowed; }
+        .catalog-empty { padding: 28px; color: #6b7280; text-align: center; border: 1px dashed #cbd5e1; border-radius: 12px; }
+        .gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; padding: 24px 7% 80px; }
+        .photo-card { overflow: hidden; border: 1px solid #e5e7eb; border-radius: 12px; background: white; }
+        .photo-card img { display: block; width: 100%; height: 230px; object-fit: cover; background: #f3f4f6; }
+        .photo-card figcaption { padding: 12px 14px; color: #374151; font-weight: 600; }
+        .empty-results { grid-column: 1 / -1; text-align: center; padding: 40px; color: #6b7280; }
+        .whatsapp-float { position: fixed; right: 22px; bottom: 22px; z-index: 20; padding: 13px 18px; border-radius: 999px; background: #25d366; color: #064e3b; box-shadow: 0 8px 22px #0003; font-weight: 700; }
+        .whatsapp-float:hover { background: #1fbd5a; }
+        .site-footer { background: #030712; color: #e5e7eb; }
+        .site-footer-content { padding: 54px 7% 38px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 42px; }
+        .site-footer h2, .site-footer h3 { color: #fff; margin: 0 0 14px; }
+        .site-footer p { color: #9ca3af; margin: 6px 0; }
+        .site-footer a { color: #cbd5e1; }
+        .site-footer a:hover { color: #fff; }
+        .site-footer-links a { display: block; margin: 7px 0; }
+        .site-footer-bottom { text-align: center; padding: 18px 20px; border-top: 1px solid #1f2937; color: #9ca3af; font-size: 14px; }
+        .zoomable-product-image { cursor: zoom-in; }
+        .product-image-viewer { position: fixed; inset: 0; z-index: 2000; display: none; align-items: center; justify-content: center; padding: 70px 20px 30px; background: rgba(3,7,18,.94); }
+        .product-image-viewer.is-open { display: flex; }
+        .product-image-viewer img { max-width: min(92vw,1200px); max-height: 82vh; object-fit: contain; transform: scale(1); transition: transform .15s ease; cursor: zoom-in; }
+        .viewer-controls { position: absolute; top: 18px; right: 20px; display: flex; gap: 10px; z-index: 1; }
+        .viewer-controls button { width: 46px; height: 46px; border: 1px solid #ffffff55; border-radius: 50%; background: #111827; color: white; font-size: 25px; cursor: pointer; }
+        .viewer-hint { position: absolute; bottom: 16px; color: #e5e7eb; font-size: 14px; text-align: center; }
+        @media (max-width: 900px) { .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); } .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (max-width: 650px) {
+            .navbar { justify-content: center; }
+            nav { justify-content: center; }
+            .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-right: 20px; padding-left: 20px; }
+            .gallery-tools { padding-right: 20px; padding-left: 20px; }
+            .catalog-section { padding: 40px 20px 12px; }
+            .catalog-grid { grid-template-columns: 1fr; }
+            .photo-card img { height: 180px; }
+            .site-footer-content { grid-template-columns: 1fr; gap: 24px; padding: 42px 20px 28px; }
+        }
+        @media (max-width: 400px) { .gallery { grid-template-columns: 1fr; } }
+        .navbar nav { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
+        .navbar nav a { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 8px 14px; border: 1px solid #e2e8f0; border-radius: 9px; background: #fff; color: #374151; font-size: 14px; font-weight: 700; transition: color .2s ease, background .2s ease, border-color .2s ease, transform .2s ease; }
+        .navbar nav a:hover { border-color: #93c5fd; background: #eff6ff; color: #1d4ed8; transform: translateY(-1px); }
+        .navbar nav a.active { border-color: #2563eb; background: #2563eb; color: #fff; }
+        .navbar nav a:focus-visible { outline: 3px solid #93c5fd; outline-offset: 2px; }
+        .navbar .logo { display: flex; align-items: center; flex-shrink: 0; }
+        .navbar .logo img { display: block; width: auto; height: 64px; object-fit: contain; }
+        .site-footer-content > div { min-width: 0; }
+        .site-footer .footer-logo { display: block; width: 176px; max-width: 100%; height: auto; margin-bottom: 14px; }
+        .site-footer a { overflow-wrap: anywhere; }
+        @media (max-width: 900px) { .navbar { flex-wrap: wrap; } }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <a class="logo" href="INDEX.html" aria-label="Andru Genal Electronics home"><img src="images/andru-genal-logo.png" alt="Andru Genal Electronics"></a>
+        <nav aria-label="Main navigation">
+            <a href="INDEX.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="inventory.html">Inventory</a>
+            <a href="product.html" class="active">Products</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <a class="cart-link" href="cart.html">🛒 Cart</a>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <p>ANDRU GENAL ELECTRONICS</p>
+            <h1>Our Products</h1>
+            <span>Browse available products and our full photo collection.</span>
+        </section>
+        <section class="catalog-section" aria-labelledby="catalog-title">
+            <h2 class="catalog-heading" id="catalog-title">Available Products</h2>
+            <p class="catalog-intro">Products added or updated by the admin appear here.</p>
+            <div class="catalog-grid" id="inventory-products"></div>
+        </section>
+        <section class="catalog-section" aria-labelledby="gallery-title">
+            <h2 class="catalog-heading" id="gallery-title">Product Photo Gallery</h2>
+            <p class="catalog-intro">Browse all product photos from our store.</p>
+        </section>
+        <div class="gallery-tools">
+            <input id="photo-search" type="search" placeholder="Search product photos..." aria-label="Search product photos">
+        </div>
+        <section class="gallery" id="product-gallery" aria-label="Product photo gallery"></section>
+    </main>
+
+    <footer>© 2026 ANDRU GENAL ELECTRONICS. All Rights Reserved.</footer>
+    <a class="whatsapp-float" href="https://wa.me/256700837197" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">💬 WhatsApp</a>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="app-data.js"></script>
+    <script>
+        (function () {
+            function addProductToCart(product) {
+                const cart = JSON.parse(localStorage.getItem('andruCart') || '[]');
+                const existing = cart.find(function (item) { return item.name === product.name; });
+                if (existing) existing.quantity += 1;
+                else cart.push({ name: product.name, price: Number(product.sellingPrice), quantity: 1 });
+                localStorage.setItem('andruCart', JSON.stringify(cart));
+                alert(product.name + ' has been added to your cart!');
+            }
+
+            const productsContainer = document.getElementById('inventory-products');
+            window.storeData.getProducts().then(function (products) {
+            if (!products.length) {
+                const empty = document.createElement('p');
+                empty.className = 'catalog-empty';
+                empty.textContent = 'No products are currently available.';
+                productsContainer.append(empty);
+            }
+
+            products.forEach(function (product) {
+                const card = document.createElement('article');
+                card.className = 'catalog-card';
+
+                const image = document.createElement('img');
+                image.src = product.image;
+                image.alt = product.name + ' product image';
+                image.loading = 'lazy';
+
+                const details = document.createElement('div');
+                details.className = 'catalog-info';
+                const category = document.createElement('span');
+                category.className = 'catalog-category';
+                category.textContent = product.category;
+                const name = document.createElement('h3');
+                name.textContent = product.name;
+                const description = document.createElement('p');
+                description.textContent = product.description || 'Quality electronics from Andru Genal.';
+                const price = document.createElement('div');
+                price.className = 'catalog-price';
+                price.textContent = product.sellingPrice == null ? 'Price not available' : 'UGX ' + Number(product.sellingPrice).toLocaleString();
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.textContent = Number(product.stock) <= 0 ? 'Out of Stock' : 'Add to Cart';
+                button.disabled = Number(product.stock) <= 0 || product.sellingPrice == null;
+                if (!button.disabled) button.addEventListener('click', function () { addProductToCart(product); });
+
+                details.append(category, name, description, price, button);
+                card.append(image, details);
+                productsContainer.append(card);
+            });
+            }).catch(function (error) {
+                console.error(error);
+                const notice = document.createElement('p');
+                notice.className = 'catalog-empty';
+                notice.setAttribute('role', 'alert');
+                notice.textContent = 'Products are temporarily unavailable. Please try again later.';
+                productsContainer.append(notice);
+            });
+
+            const imageNumbers = [];
+            for (let number = 173; number <= 179; number += 1) imageNumbers.push(number);
+            for (let number = 181; number <= 217; number += 1) imageNumbers.push(number);
+            imageNumbers.push(219, 221, 226, 228);
+            for (let number = 231; number <= 298; number += 1) imageNumbers.push(number);
+            imageNumbers.push(300);
+
+            const gallery = document.getElementById('product-gallery');
+            const search = document.getElementById('photo-search');
+            const cards = imageNumbers.map(function (number, index) {
+                const filename = 'IMG-20260829-WA' + String(number).padStart(4, '0') + '.jpg';
+                const figure = document.createElement('figure');
+                figure.className = 'photo-card';
+                figure.dataset.search = (filename + ' product ' + (index + 1)).toLowerCase();
+
+                const image = document.createElement('img');
+                image.src = 'images/' + filename;
+                image.alt = 'Product photo ' + (index + 1);
+                image.loading = 'lazy';
+
+                const caption = document.createElement('figcaption');
+                caption.textContent = 'Product photo ' + (index + 1);
+                figure.append(image, caption);
+                gallery.append(figure);
+                return figure;
+            });
+
+            search.addEventListener('input', function () {
+                const query = search.value.trim().toLowerCase();
+                let shown = 0;
+                cards.forEach(function (card) {
+                    const matches = card.dataset.search.includes(query);
+                    card.hidden = !matches;
+                    if (matches) shown += 1;
+                });
+
+                let empty = gallery.querySelector('.empty-results');
+                if (shown === 0 && !empty) {
+                    empty = document.createElement('p');
+                    empty.className = 'empty-results';
+                    empty.textContent = 'No product photos match your search.';
+                    gallery.append(empty);
+                } else if (shown > 0 && empty) {
+                    empty.remove();
+                }
+            });
+        })();
+    </script>
+    <script>
+        (function () {
+            const footer = document.querySelector('footer');
+            if (footer) {
+                footer.className = 'site-footer';
+                footer.innerHTML = `
+                    <div class="site-footer-content">
+                        <div><img class="footer-logo" src="images/andru-genal-logo.png" alt="Andru Genal Electronics"><p>Quality electronics, trusted service, and helpful support.</p><p>Serving customers across Uganda.</p></div>
+                        <div class="site-footer-links"><h3>Explore</h3><a href="INDEX.html">Home</a><a href="shop.html">Shop</a><a href="product.html">Products</a><a href="contact.html">Contact</a></div>
+                        <div><h3>Get in touch</h3><p><a href="tel:+256700837197">Call: 0700 837197</a></p><p><a href="https://wa.me/256700837197" target="_blank" rel="noopener noreferrer">WhatsApp support</a></p><p><a href="mailto:info@andrugenal.com">info@andrugenal.com</a></p></div>
+                    </div>
+                    <div class="site-footer-bottom">© ${new Date().getFullYear()} ANDRU GENAL ELECTRONICS. All rights reserved.</div>`;
+            }
+
+            const viewer = document.createElement('div');
+            viewer.className = 'product-image-viewer';
+            viewer.setAttribute('role', 'dialog');
+            viewer.setAttribute('aria-modal', 'true');
+            viewer.setAttribute('aria-label', 'Product image zoom');
+            viewer.innerHTML = '<div class="viewer-controls"><button type="button" data-zoom="out" aria-label="Zoom out">−</button><button type="button" data-zoom="in" aria-label="Zoom in">+</button><button type="button" data-zoom="close" aria-label="Close image">×</button></div><img alt=""><p class="viewer-hint">Use + / − or your mouse wheel to zoom. Press Escape to close.</p>';
+            document.body.append(viewer);
+            const enlargedImage = viewer.querySelector('img');
+            let zoom = 1;
+
+            function setZoom(value) {
+                zoom = Math.max(1, Math.min(4, value));
+                enlargedImage.style.transform = 'scale(' + zoom + ')';
+                enlargedImage.style.cursor = zoom > 1 ? 'zoom-out' : 'zoom-in';
+            }
+            function closeViewer() {
+                viewer.classList.remove('is-open');
+                document.body.style.overflow = '';
+            }
+
+            document.addEventListener('click', function (event) {
+                if (!(event.target instanceof Element)) return;
+                const productImage = event.target.closest('.product-image img, .shop-product-image img, .photo-card img, .catalog-card img');
+                if (productImage && !viewer.contains(productImage)) {
+                    enlargedImage.src = productImage.currentSrc || productImage.src;
+                    enlargedImage.alt = productImage.alt;
+                    setZoom(1);
+                    viewer.classList.add('is-open');
+                    document.body.style.overflow = 'hidden';
+                    return;
+                }
+                if (event.target === viewer) closeViewer();
+                const button = event.target.closest('[data-zoom]');
+                if (!button || !viewer.classList.contains('is-open')) return;
+                if (button.dataset.zoom === 'close') closeViewer();
+                if (button.dataset.zoom === 'in') setZoom(zoom + 0.25);
+                if (button.dataset.zoom === 'out') setZoom(zoom - 0.25);
+            });
+            enlargedImage.addEventListener('click', function () { setZoom(zoom > 1 ? 1 : 2); });
+            viewer.addEventListener('wheel', function (event) {
+                if (!viewer.classList.contains('is-open')) return;
+                event.preventDefault();
+                setZoom(zoom + (event.deltaY < 0 ? 0.2 : -0.2));
+            }, { passive: false });
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape') closeViewer();
+                if (viewer.classList.contains('is-open') && event.key === '+') setZoom(zoom + 0.25);
+                if (viewer.classList.contains('is-open') && event.key === '-') setZoom(zoom - 0.25);
+            });
+            document.querySelectorAll('.product-image img, .shop-product-image img, .photo-card img, .catalog-card img').forEach(function (image) {
+                image.classList.add('zoomable-product-image');
+                image.title = 'Click to zoom';
+            });
+        })();
+    </script>
+</body>
+</html>
